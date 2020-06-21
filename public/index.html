@@ -42,23 +42,17 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="db.js"></script>
   <script src="index.js"></script>
   <script>
-    window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-  
-    const request = window.indexedDB.open("transactions", 1);
-  
-        // On success console the result.
-        request.onsuccess = event => {
-          console.log(request.result);
-        };
-  
-        // Create an object store inside the onupgradeneeded method.
-        request.onupgradeneeded = ({ target }) => {
-          const db = target.result;
-          const objectStore = db.createObjectStore("transactions");
-          console.log(objectStore);
-        };
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js")
+          .then(reg => {
+            console.log("We found your service worker file!", reg);
+          });
+      });
+    }
   </script>
 </body>
 </html>
