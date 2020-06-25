@@ -10,7 +10,7 @@ request.onerror = function(event) {
 // Create an object store inside the onupgradeneeded method.
 request.onupgradeneeded = ({ target }) => {
   const db = target.result;
-  db.createObjectStore("transactions", { autoIncrement: true });
+  db.createObjectStore("transactions");
 };
 
 request.onsuccess = function(event) {
