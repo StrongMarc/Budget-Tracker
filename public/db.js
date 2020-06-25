@@ -1,6 +1,6 @@
-window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+const indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 
-const request = window.indexedDB.open("budget", 1);
+const request = indexedDB.open("budget", 1);
     let db;
 
 request.onerror = function(event) {
